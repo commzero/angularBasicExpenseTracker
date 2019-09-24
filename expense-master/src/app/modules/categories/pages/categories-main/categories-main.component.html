@@ -1,0 +1,32 @@
+<br>
+<button (click)="onAddCategory()" color="primary" mat-raised-button>Add Category</button>
+<br>
+<br>
+<table style="width: 100%" mat-table [dataSource]="categories" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+    </ng-container>
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon class="point" aria-hidden="false" aria-label="Edit icon" *ngIf="element.active">
+                check_circle_outline</mat-icon>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon (click)="onEditCategory(element)" class="point" aria-hidden="false" aria-label="Edit icon">edit
+            </mat-icon> &nbsp;
+            <mat-icon (click)="deleteCategory(element.id)" class="point" aria-hidden="false" aria-label="Delete icon">
+                delete</mat-icon>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

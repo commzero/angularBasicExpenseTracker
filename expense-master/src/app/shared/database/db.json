@@ -1,0 +1,88 @@
+{
+  "expenses": [
+    {
+      "id": 1,
+      "desc": "Bill payment",
+      "amount": 300,
+      "currency": "USD",
+      "category": "Bills",
+      "date": "2019-09-23T22:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "desc": "Other payment",
+      "amount": 100,
+      "currency": "USD",
+      "category": "Other",
+      "date": "2019-09-23T22:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "desc": "Food payment",
+      "amount": 500,
+      "currency": "USD",
+      "category": "Food",
+      "date": "2019-09-23T22:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "amount": "40",
+      "currency": "USD",
+      "category": "Loans",
+      "date": "2019-09-23T22:00:00.000Z",
+      "desc": "gjgj"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Bills",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Other",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Food",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Transportation",
+      "active": false
+    },
+    {
+      "id": 5,
+      "name": "Loans",
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Loan",
+      "active": false
+    }
+  ],
+  "currencies": [
+    {
+      "id": 1,
+      "name": "EGP"
+    },
+    {
+      "id": 2,
+      "name": "USD"
+    },
+    {
+      "id": 3,
+      "name": "EUR"
+    }
+  ],
+  "users": [
+    { 
+      "username": "mohamed",
+      "password": "123456"
+     }
+  ]
+}

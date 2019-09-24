@@ -1,0 +1,43 @@
+<h4 *ngIf="!expenseObject">New Expense</h4>
+<h4 *ngIf="expenseObject">Edit Expense {{ expenseObject.id }}</h4>
+<br>
+<form [formGroup]="addEditExpenseForm">
+    <mat-form-field>
+        <input formControlName="amount" matInput placeholder="Amount">
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <mat-select [(value)]="addEditExpenseForm.get('currency').value" formControlName="currency">
+            <mat-option *ngFor="let currency of currencies" [value]="currency.name">{{ currency.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h5 *ngIf="addEditExpenseForm.get('amount').hasError('required') && addEditExpenseForm.get('amount').touched" class="error-color">Amount is required</h5>
+    <h5 *ngIf="addEditExpenseForm.get('currency').hasError('required') && addEditExpenseForm.get('currency').touched" class="error-color">Currency is required</h5>
+    <h5 *ngIf="addEditExpenseForm.get('amount').hasError('min')" class="error-color">Amount min value is 1</h5>
+    <br>
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select [(value)]="addEditExpenseForm.get('category').value" formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+        <input [value]="addEditExpenseForm.get('date').value" formControlName="date" matInput [matDatepicker]="picker" placeholder="Date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <h5 *ngIf="addEditExpenseForm.get('date').hasError('required') && addEditExpenseForm.get('date').touched" class="error-color">Date is required</h5>
+    <h5 *ngIf="addEditExpenseForm.get('category').hasError('required') && addEditExpenseForm.get('category').touched" class="error-color">Category is required</h5>
+    <mat-form-field class="width-75">
+        <textarea formControlName="desc" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+    <br>
+    <br>
+    <button [disabled]="!addEditExpenseForm.valid" (click)="onAddExpense()" type="submit" *ngIf="!expenseObject"
+        color="primary" mat-raised-button>Add</button>&nbsp;
+    <button [disabled]="!addEditExpenseForm.valid" (click)="onEditExpense()" type="submit" *ngIf="expenseObject"
+        color="primary" mat-raised-button>Save</button>&nbsp;
+    <button (click)="onCancel()" color="warn" mat-raised-button>CANCEL</button>
+</form>

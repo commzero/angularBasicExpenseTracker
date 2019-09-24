@@ -1,0 +1,18 @@
+<h4 *ngIf="!categoryObject">New Category</h4>
+<h4 *ngIf="categoryObject">Edit Category {{ categoryObject.id }}</h4>
+<br>
+<form [formGroup]="addEditCategoryForm" >
+    <mat-form-field>
+        <input formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
+    <h5 *ngIf="addEditCategoryForm.get('name').hasError('required')" class="error-color" >Name is required</h5>
+    <br>
+    <mat-checkbox formControlName="active">Active!</mat-checkbox>
+    <br>
+    <br>
+    <button [disabled]="!addEditCategoryForm.valid" (click)="onAddCategory()" type="submit" *ngIf="!categoryObject" color="primary"
+        mat-raised-button>Add</button>&nbsp;
+    <button [disabled]="!addEditCategoryForm.valid" (click)="onEditCategory()" type="submit" *ngIf="categoryObject" color="primary"
+        mat-raised-button>Save</button>&nbsp;
+    <button (click)="onCancel()" color="warn" mat-raised-button>CANCEL</button>
+</form>
